@@ -13,11 +13,6 @@ if __name__ == '__main__':
 
     user_info = requests.request('GET', user_url).json()
     todos_info = requests.request('GET', todos_url).json()
-    emp_name = user_info["name"]
-    task_completed = list(filter(lambda obj:
-                                 (obj["completed"] is True), todos_info))
-    number_tasks = len(task_completed)
-    total_tasks = len(todos_info)
 
     with open('{}.json'.format(user_id), 'w') as jsonfile:
         json.dump({user_id: [{"task": task["title"],
